@@ -1,0 +1,65 @@
+[
+    {
+        "speaker": "ai",
+        "grammar_vocabulary": 5,
+        "pronunciation": 5,
+        "interactive_communication": 5,
+        "overall_score": 5
+    },
+    {
+        "speaker": "real",
+        "grammar_vocabulary": 1,
+        "pronunciation": 5,
+        "interactive_communication": 1,
+        "overall_score": 2.3
+    },
+    {
+        "speaker": "ai",
+        "grammar_vocabulary": 5,
+        "pronunciation": 5,
+        "interactive_communication": 5,
+        "overall_score": 5
+    },
+    {
+        "speaker": "real",
+        "grammar_vocabulary": 1,
+        "pronunciation": 5,
+        "interactive_communication": 1,
+        "overall_score": 2.3
+    },
+    {
+        "speaker": "ai",
+        "grammar_vocabulary": 1,
+        "pronunciation": 1,
+        "interactive_communication": 1,
+        "overall_score": 1.0
+    },
+    {
+        "speaker": "real",
+        "grammar_vocabulary": 1,
+        "pronunciation": 5,
+        "interactive_communication": 1,
+        "overall_score": 2.3
+    },
+    {
+        "speaker": "ai",
+        "grammar_vocabulary": 1,
+        "pronunciation": 1,
+        "interactive_communication": 1,
+        "overall_score": 1.0
+    },
+    {
+        "speaker": "real",
+        "grammar_vocabulary": 3,
+        "pronunciation": 3,
+        "interactive_communication": 3,
+        "overall_score": 3.0
+    },
+    {
+        "speaker": "ai",
+        "grammar_vocabulary": 5,
+        "pronunciation": 5,
+        "interactive_communication": 5,
+        "overall_score": 5.0
+    }
+]

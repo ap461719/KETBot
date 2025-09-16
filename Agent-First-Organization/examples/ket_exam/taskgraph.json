@@ -1,0 +1,332 @@
+{
+  "role": "KET Exam Chatbot",
+  "user_objective": "Simulate the KET speaking test with structured examiner questions and realistic student interactions.",
+  "builder_objective": "Ensure the AI examiner follows the KET format and the AI student responds naturally.",
+  "intro": "This chatbot simulates the KET speaking test by conducting a structured speaking test with a real student and an AI student.",
+  "nodes": [
+    [
+      "0",
+      {
+        "resource": {"id": null, "name": "MessageWorker"},
+        "attribute": {
+          "value": "Hello and welcome to the KET Exam Chatbot! I'm here to help you practice for your KET speaking test. Let's start with some questions.",
+          "task": "Start the exam conversation with an introductory question.",
+          "directed": false
+        },
+        "limit": 1,
+        "type": "start"
+      }
+    ],
+    [
+      "1",
+      {
+        "resource": {"id": "789e1234-b56c-78d9-c012-345678901234", "name": "StudentWorker"},
+        "attribute": {
+          "value": "My name is Heidi.",
+          "task": "AI student responds with their name when prompted.",
+          "directed": false
+        },
+        "limit": 1
+      }
+    ],
+    [
+      "2",
+      {
+        "resource": {"id": "123e4567-e89b-12d3-a456-426614174000", "name": "ExaminerWorker"},
+        "attribute": {
+          "value": "And what's your name?",
+          "task": "Examiner asks the real student their name.",
+          "directed": false
+        },
+        "limit": 1
+      }
+    ],
+    [
+      "3",
+      {
+        "resource": {"id": "456e7890-a12b-34c5-b678-567890123456", "name": "StudentWorker"},
+        "attribute": {
+          "value": "My name is Iris.",
+          "task": "Real student responds with their name.",
+          "directed": false
+        },
+        "limit": 1
+      }
+    ],
+    [
+      "4",
+      {
+        "resource": {"id": "123e4567-e89b-12d3-a456-426614174000", "name": "ExaminerWorker"},
+        "attribute": {
+          "value": "Now let's move to the discussion part. The topic is 'Hobbies and Free Time.'",
+          "task": "Examiner introduces Stage 2 discussion topic.",
+          "directed": true
+        },
+        "limit": 1
+      }
+    ],
+    [
+      "5",
+      {
+        "resource": {"id": "789e1234-b56c-78d9-c012-345678901234", "name": "StudentWorker"},
+        "attribute": {
+          "value": "I enjoy playing football and reading books. What about you?",
+          "task": "AI student gives an opinion on the discussion topic.",
+          "directed": false
+        },
+        "limit": 1
+      }
+    ],
+    [
+      "6",
+      {
+        "resource": {"id": "456e7890-a12b-34c5-b678-567890123456", "name": "StudentWorker"},
+        "attribute": {
+          "value": "I like to play guitar and listen to music.",
+          "task": "Real student responds to the discussion topic.",
+          "directed": false
+        },
+        "limit": 1
+      }
+    ], 
+    [
+      "7",
+      {
+        "resource": { "id": "123e4567-e89b-12d3-a456-426614174000", "name": "ExaminerWorker" },
+        "attribute": {
+          "value": "Can you describe a time when studying in a library helped you more than studying at home?",
+          "task": "Examiner asks a Stage 3 follow-up question based on the Stage 2 topic.",
+          "directed": true
+        },
+        "limit": 1
+      }
+    ],
+    [
+      "8",
+      {
+        "resource": { "id": "789e1234-b56c-78d9-c012-345678901234", "name": "StudentWorker" },
+        "attribute": {
+          "value": "Once, I had a big test, and I focused better in the library because it was quiet. I also had access to books I needed.",
+          "task": "AI student gives a thoughtful response to the follow-up question.",
+          "directed": false
+        },
+        "limit": 1
+      }
+    ],
+    [
+      "9",
+      {
+        "resource": { "id": "456e7890-a12b-34c5-b678-567890123456", "name": "StudentWorker" },
+        "attribute": {
+          "value": "I agree. I also find the library more helpful when I have exams.",
+          "task": "Real student responds to the follow-up question.",
+          "directed": false
+        },
+        "limit": 1
+      }
+    ]
+  ],
+  "edges": [
+    [
+      "0",
+      "1",
+      {
+        "intent": {
+          "task_name": "AI Student Responds in Stage 1",
+          "sys_instruct": "You are an AI student in Stage 1 of the KET speaking test. Respond concisely and naturally at an A2 English level.",
+          "steps": [
+            "Respond to the examiner's question with simple answers.",
+            "Do NOT ask follow-up questions."
+          ],
+          "workers": [{"id": "789e1234-b56c-78d9-c012-345678901234", "name": "StudentWorker"}]
+        },
+        "attribute": {"weight": 1, "pred": true}
+      }
+    ],
+    [
+      "1",
+      "2",
+      {
+        "intent": {
+          "task_name": "Examiner Asks Real Student",
+          "sys_instruct": "Ask structured KET-style questions following the format.",
+          "steps": ["Ask the real student their name and simple questions about themselves."],
+          "workers": [{"id": "123e4567-e89b-12d3-a456-426614174000", "name": "ExaminerWorker"}]
+        },
+        "attribute": {"weight": 1, "pred": true}
+      }
+    ],
+    [
+      "2",
+      "3",
+      {
+        "intent": {
+          "task_name": "Real Student Responds",
+          "sys_instruct": "Respond naturally to the examiner's question as a real student.",
+          "steps": ["Provide relevant answers based on KET exam standards."],
+          "workers": [{"id": "456e7890-a12b-34c5-b678-567890123456", "name": "StudentWorker"}]
+        },
+        "attribute": {"weight": 1, "pred": true}
+      }
+    ],
+    [
+      "3",
+      "4",
+      {
+        "intent": {
+          "task_name": "Transition to Stage 2",
+          "sys_instruct": "Move to Stage 2 after initial introductions are complete.",
+          "steps": ["Introduce the discussion topic."],
+          "workers": [{"id": "123e4567-e89b-12d3-a456-426614174000", "name": "ExaminerWorker"}]
+        },
+        "attribute": {"weight": 1, "pred": true}
+      }
+    ],
+    [
+      "4",
+      "5",
+      {
+        "intent": {
+          "task_name": "AI Student Discusses Topic",
+          "sys_instruct": "AI student responds to the discussion topic with an opinion and short explanation.",
+          "steps": ["Express opinion on the topic.", "React to the previous student's comment."],
+          "workers": [{"id": "789e1234-b56c-78d9-c012-345678901234", "name": "StudentWorker"}]
+        },
+        "attribute": {"weight": 1, "pred": true}
+      }
+    ],
+    [
+      "5",
+      "6",
+      {
+        "intent": {
+          "task_name": "Real Student Discusses Topic",
+          "sys_instruct": "Real student responds to the AI student's opinion with their thoughts.",
+          "steps": ["Express agreement or provide a different opinion."],
+          "workers": [{"id": "456e7890-a12b-34c5-b678-567890123456", "name": "StudentWorker"}]
+        },
+        "attribute": {"weight": 1, "pred": true}
+      }
+    ], 
+    [
+      "6",
+      "7",
+      {
+        "intent": {
+          "task_name": "Examiner Asks Stage 3 Follow-Up",
+          "sys_instruct": "Ask a follow-up question based on the Stage 2 discussion topic. Adjust question according to difficulty.",
+          "steps": ["Choose a relevant follow-up based on the previous discussion."],
+          "workers": [{ "id": "123e4567-e89b-12d3-a456-426614174000", "name": "ExaminerWorker" }]
+        },
+        "attribute": { "weight": 1, "pred": true }
+      }
+    ],
+    [
+      "7",
+      "8",
+      {
+        "intent": {
+          "task_name": "AI Student Responds to Follow-Up",
+          "sys_instruct": "Respond to the examiner’s follow-up question in a KET-style short response based on difficulty.",
+          "steps": ["Answer the follow-up question briefly and appropriately."],
+          "workers": [{ "id": "789e1234-b56c-78d9-c012-345678901234", "name": "StudentWorker" }]
+        },
+        "attribute": { "weight": 1, "pred": true }
+      }
+    ],
+    [
+      "8",
+      "9",
+      {
+        "intent": {
+          "task_name": "Real Student Responds to Follow-Up",
+          "sys_instruct": "Respond naturally to the follow-up question asked by the examiner.",
+          "steps": ["Answer with your own experience or opinion."],
+          "workers": [{ "id": "456e7890-a12b-34c5-b678-567890123456", "name": "StudentWorker" }]
+        },
+        "attribute": { "weight": 1, "pred": true }
+      }
+    ]
+  ],
+  "tasks": [
+    {
+      "task_name": "AI Examiner Conducts Stage 1",
+      "sys_instruct": "Ask both students KET-style questions in Stage 1. Do not proceed until five questions are asked.",
+      "steps": ["Ask initial personal questions.", "Alternate between AI and real student."],
+      "workers": [{"id": "123e4567-e89b-12d3-a456-426614174000", "name": "ExaminerWorker"}]
+    },
+    {
+      "task_name": "Stage 2 Discussion",
+      "sys_instruct": "Facilitate a conversation between the two students. Alternate turns and ensure natural dialogue.",
+      "steps": [
+        "Introduce a discussion topic.",
+        "Allow the AI student to respond first.",
+        "Have the real student respond.",
+        "Alternate turns for a set number of exchanges."
+      ],
+      "workers": [
+        {"id": "123e4567-e89b-12d3-a456-426614174000", "name": "ExaminerWorker"},
+        {"id": "789e1234-b56c-78d9-c012-345678901234", "name": "StudentWorker"},
+        {"id": "456e7890-a12b-34c5-b678-567890123456", "name": "StudentWorker"}
+      ]
+    },
+    {
+      "task_name": "Stage 3 Follow-Up",
+      "sys_instruct": "Ask follow-up questions based on the Stage 2 discussion topic and collect responses from both students.",
+      "steps": [
+        "Examiner asks a follow-up question related to the discussion topic.",
+        "AI student answers first.",
+        "Real student answers next."
+      ],
+      "workers": [
+        { "id": "123e4567-e89b-12d3-a456-426614174000", "name": "ExaminerWorker" },
+        { "id": "789e1234-b56c-78d9-c012-345678901234", "name": "StudentWorker" },
+        { "id": "456e7890-a12b-34c5-b678-567890123456", "name": "StudentWorker" }
+      ]
+    }
+  ],
+  "workers": [
+    {
+      "id": "123e4567-e89b-12d3-a456-426614174000",
+      "name": "ExaminerWorker",
+      "path": "arklex.env.workers.examiner_worker",
+      "description": "Handles structured KET-style questions and manages conversation flow."
+    },
+    {
+      "id": "789e1234-b56c-78d9-c012-345678901234",
+      "name": "StudentWorker",
+      "path": "arklex.env.workers.student_worker",
+      "description": "Acts as the AI student responding to examiner's questions."
+    },
+    {
+      "id": "456e7890-a12b-34c5-b678-567890123456",
+      "name": "StudentWorker",
+      "path": "arklex.env.workers.student_worker",
+      "description": "Simulates the real student's responses."
+    }
+  ], 
+  "rag_docs": [
+        {
+            "source": "./examples/ket_exam/ket_rubric.json",
+            "desc": "KET grading criteria for evaluating student responses."
+        },
+        {
+            "source": "./examples/ket_exam/ket_exam_transcript.txt",
+            "desc": "Sample transcript from a real KET exam to guide chatbot responses."
+        }
+    ],
+    "task_docs": [
+        {
+            "source": "./examples/ket_exam/ket_rubric.json",
+            "desc": "Grading rubric for pronunciation, grammar, vocabulary, and communication."
+        },
+        {
+            "source": "./examples/ket_exam/ket_exam_transcript.txt",
+            "desc": "Transcript for structuring conversation flow based on real KET exams."
+        }
+    ],
+    "tools": [],
+    "nluapi": "http://localhost:55135/nlu",
+    "slotfillapi": "http://localhost:55135/slotfill"
+}
+

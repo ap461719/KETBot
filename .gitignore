@@ -1,0 +1,67 @@
+# OS/IDE
+.DS_Store
+.vscode/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+venv/
+.env
+*.egg-info/
+
+# Logs & cache
+*.log
+logs/
+.cache/
+.ipynb_checkpoints/
+
+# Build
+build/
+dist/
+
+# Tests artifacts
+.coverage
+htmlcov/
+
+# Node (if any)
+node_modules/
+
+# Data / models / artifacts
+data/
+datasets/
+checkpoints/
+models/
+artifacts/
+outputs/
+
+# Reports/media (store elsewhere or use LFS)
+reports/*.wav
+reports/*.mp3
+reports/*.mp4
+reports/*.m4a
+*.wav
+*.mp3
+*.mp4
+*.m4a
+*.mov
+*.zip
+*.tar
+*.tar.gz
+*.onnx
+*.pt
+*.pth
+*.ckpt
+*.pkl
+
+# Local transcripts & large JSON (keep only if needed)
+conversation_history.json
+ket_exam_transcript.txt
+
+# Env files
+.env*
+*.pem
+*.key
+*.credential

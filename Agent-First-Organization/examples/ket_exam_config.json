@@ -1,0 +1,91 @@
+{
+    "role": "KET Exam Chatbot",
+    "user_objective": "Simulate the KET speaking test with structured examiner questions and realistic student interactions.",
+    "builder_objective": "Ensure the AI examiner follows the KET format and the AI student responds naturally.",
+    "domain": "English Language Assessment",
+    "intro": "This chatbot simulates the KET speaking test by conducting a structured speaking test with a real student and an AI student.",
+  
+    "tasks": [
+      {
+        "task_name": "AI Examiner Conducts Stage 1",
+        "sys_instruct": "You are the examiner conducting Stage 1 of the KET exam. Ask structured questions to both students. Alternate between the AI student and the real student. Ensure questions follow the KET format. Do NOT say 'Let's move on' until you have asked at least 5 questions.",
+        "steps": [
+          "Ask the AI student an initial KET-style question.",
+          "Ask the real student a KET-style question.",
+          "Process each student's response and generate relevant follow-ups.",
+          "Alternate between students while maintaining the test structure."
+        ],
+        "workers": [
+          {
+            "id": "123e4567-e89b-12d3-a456-426614174000",
+            "name": "ExaminerWorker",
+            "path": "arklex.env.workers.examiner_worker"
+          }
+        ]
+      },
+      {
+        "task_name": "AI Student Responds in Stage 1",
+        "sys_instruct": "You are an AI student in Stage 1 of the KET speaking test. Respond naturally at an A2 English level to the examiner's questions. Keep answers concise and relevant to the question asked. Do not ask follow-up questions.",
+        "steps": [
+          "Generate a response to the examiner's question based on typical KET Stage 1 answers.",
+          "Maintain logical flow and provide answers similar to real KET candidates."
+        ],
+        "workers": [
+          {
+            "id": "789e1234-b56c-78d9-c012-345678901234",
+            "name": "StudentWorker",
+            "path": "arklex.env.workers.student_worker"
+          }
+        ]
+      },
+      {
+        "task_name": "Evaluate Student Responses",
+        "sys_instruct": "Analyze student responses using the KET grading rubric. Evaluate pronunciation, grammar, vocabulary, and interactive communication.",
+        "steps": [
+          "Analyze the real student's responses using the KET rubric.",
+          "Output structured JSON scores for pronunciation, grammar, vocabulary, and communication."
+        ],
+        "workers": []
+      }
+    ],
+  
+    "workers": [
+      {
+        "id": "123e4567-e89b-12d3-a456-426614174000",
+        "name": "ExaminerWorker",
+        "path": "arklex.env.workers.examiner_worker",
+        "description": "Handles structured KET-style questions and manages the conversation flow."
+      },
+      {
+        "id": "789e1234-b56c-78d9-c012-345678901234",
+        "name": "StudentWorker",
+        "path": "arklex.env.workers.student_worker",
+        "description": "Acts as the AI student responding naturally to examiner's questions."
+      }
+    ],
+  
+    "rag_docs": [
+      {
+        "source": "./examples/ket_exam/ket_rubric.json",
+        "desc": "KET grading criteria for evaluating student responses."
+      },
+      {
+        "source": "./examples/ket_exam/ket_exam_transcript.txt",
+        "desc": "Sample transcript from a real KET exam to guide chatbot responses."
+      }
+    ],
+  
+    "task_docs": [
+      {
+        "source": "./examples/ket_exam/ket_rubric.json",
+        "desc": "Grading rubric for pronunciation, grammar, vocabulary, and communication."
+      },
+      {
+        "source": "./examples/ket_exam/ket_exam_transcript.txt",
+        "desc": "Transcript for structuring conversation flow based on real KET exams."
+      }
+    ],
+  
+    "tools": []
+  }
+  

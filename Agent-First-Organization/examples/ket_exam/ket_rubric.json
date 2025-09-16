@@ -1,0 +1,17 @@
+{
+    "Band 5": {
+        "Grammar & Vocabulary": "Good control of simple grammar, appropriate vocabulary.",
+        "Pronunciation": "Mostly intelligible, some phonological control.",
+        "Interactive Communication": "Maintains conversation with little prompting."
+    },
+    "Band 3": {
+        "Grammar & Vocabulary": "Sufficient control of grammar, simple vocabulary.",
+        "Pronunciation": "Mostly intelligible but limited phonological control.",
+        "Interactive Communication": "Needs some prompting and support."
+    },
+    "Band 1": {
+        "Grammar & Vocabulary": "Limited grammar control, only isolated words.",
+        "Pronunciation": "Often unintelligible.",
+        "Interactive Communication": "Requires constant prompting, difficulty maintaining conversation."
+    }
+}

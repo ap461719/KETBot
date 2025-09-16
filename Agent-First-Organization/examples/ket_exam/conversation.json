@@ -1,0 +1,17 @@
+[
+    {
+        "role": "assistant",
+        "name": "examiner",
+        "content": "Hello! Welcome to the KET Exam Chatbot. I'm here to help you practice for your KET speaking test. Let's start with a few questions to get you warmed up. How are you feeling today?"
+    },
+    {
+        "role": "assistant",
+        "name": "examiner",
+        "content": "Great! Let's begin with Part 1 of the test. I'll ask you some questions about yourself. \n\nCan you tell me your name, please?"
+    },
+    {
+        "role": "assistant",
+        "name": "ai_student_1",
+        "content": "What do you like to do in your free time?"
+    }
+]

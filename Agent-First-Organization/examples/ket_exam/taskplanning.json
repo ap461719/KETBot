@@ -1,0 +1,94 @@
+[
+    {
+        "task_name": {
+            "task_name": "AI Examiner Conducts Stage 1",
+            "sys_instruct": "You are the examiner conducting Stage 1 of the KET exam. Ask structured questions to both students. Alternate between the AI student and the real student. Ensure questions follow the KET format. Do NOT say 'Let's move on' until you have asked at least 5 questions.",
+            "steps": [
+                "Ask the AI student an initial KET-style question.",
+                "Ask the real student a KET-style question.",
+                "Process each student's response and generate relevant follow-ups.",
+                "Alternate between students while maintaining the test structure."
+            ],
+            "workers": [
+                {
+                    "id": "123e4567-e89b-12d3-a456-426614174000",
+                    "name": "ExaminerWorker",
+                    "path": "arklex.env.workers.examiner_worker"
+                }
+            ]
+        },
+        "steps": [
+            {
+                "task_name": "AI Examiner Conducts Stage 1",
+                "sys_instruct": "You are the examiner conducting Stage 1 of the KET exam. Ask structured questions to both students. Alternate between the AI student and the real student. Ensure questions follow the KET format. Do NOT say 'Let's move on' until you have asked at least 5 questions.",
+                "steps": [
+                    "Ask the AI student an initial KET-style question.",
+                    "Ask the real student a KET-style question.",
+                    "Process each student's response and generate relevant follow-ups.",
+                    "Alternate between students while maintaining the test structure."
+                ],
+                "workers": [
+                    {
+                        "id": "123e4567-e89b-12d3-a456-426614174000",
+                        "name": "ExaminerWorker",
+                        "path": "arklex.env.workers.examiner_worker"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "task_name": {
+            "task_name": "AI Student Responds in Stage 1",
+            "sys_instruct": "You are an AI student in Stage 1 of the KET speaking test. Respond naturally at an A2 English level to the examiner's questions. Keep answers concise and relevant to the question asked. Do not ask follow-up questions.",
+            "steps": [
+                "Generate a response to the examiner's question based on typical KET Stage 1 answers.",
+                "Maintain logical flow and provide answers similar to real KET candidates."
+            ],
+            "workers": [
+                {
+                    "id": "789e1234-b56c-78d9-c012-345678901234",
+                    "name": "StudentWorker",
+                    "path": "arklex.env.workers.student_worker"
+                }
+            ]
+        },
+        "steps": [
+            {
+                "task_name": "AI Student Responds in Stage 1",
+                "sys_instruct": "You are an AI student in Stage 1 of the KET speaking test. Respond naturally at an A2 English level to the examiner's questions. Keep answers concise and relevant to the question asked. Do not ask follow-up questions.",
+                "steps": [
+                    "Generate a response to the examiner's question based on typical KET Stage 1 answers.",
+                    "Maintain logical flow and provide answers similar to real KET candidates."
+                ],
+                "workers": [
+                    {
+                        "id": "789e1234-b56c-78d9-c012-345678901234",
+                        "name": "StudentWorker",
+                        "path": "arklex.env.workers.student_worker"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "task_name": {
+            "task_name": "Evaluate Student Responses",
+            "sys_instruct": "Analyze student responses using the KET grading rubric. Evaluate pronunciation, grammar, vocabulary, and interactive communication.",
+            "steps": [
+                "Analyze the real student's responses using the KET rubric.",
+                "Output structured JSON scores for pronunciation, grammar, vocabulary, and communication."
+            ],
+            "workers": []
+        },
+        "steps": [
+            "ExaminerWorker asks the first structured question to the real student or AI student.",
+            "StudentWorker generates an A2-level response if the student is AI, or waits for the real student response.",
+            "Evaluate the student's response using the KET grading rubric for pronunciation, grammar, vocabulary, and interactive communication.",
+            "Record the scores for each category (pronunciation, grammar, vocabulary, communication) in a structured JSON format.",
+            "ExaminerWorker asks the next structured question based on the test flow.",
+            "Repeat steps 2-5 for each question in the test.",
+            "Compile the full evaluation report with scores for all responses in a structured JSON output."
+        ]
+    }
+]

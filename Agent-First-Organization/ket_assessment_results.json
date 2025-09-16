@@ -1,0 +1,9 @@
+{
+  "student_name": "Real Student",
+  "rule_based_error_count": 1,
+  "rule_based_score": 4.5,
+  "gpt_score": 3,
+  "gpt_explanation": "The student made 5-7 grammar errors, such as missing punctuation, incorrect word order, and missing articles.",
+  "average_score": 3.75,
+  "interactive_communication_score": 2
+}
